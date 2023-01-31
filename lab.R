@@ -16,7 +16,7 @@ seahawksScores
 ## scored against Seahawks in the first 5 games
 ## use an appropriate variable name
 oppScores <- c(16, 27, 27, 45, 39)
-
+oppScores
 
 ## Combine your two vectors into a dataframe
 firstScores <- data.frame(seahawksScores, oppScores)
@@ -29,7 +29,7 @@ firstScores
 
 ## Create a new column "won" which is TRUE if the Seahawks won,
 ## ie if Seahawks scored more than the opponent scored against them
-firstScores$won <- diff > 0
+firstScores$won <- firstScores$diff > 0
 firstScores
 
 ## Create a vector of the opponents name (such as "Denver Broncos")
@@ -44,7 +44,7 @@ cat("The average Seahawks score for the first five games of the 2022 season was"
 
 ## Compute how many games did Seahawks won
 ## (use the 'won' variable to compute it)
-length(won[TRUE])
+sum(firstScores$won)
 
 ## What was the largest difference in scores (in favor of Seahawks)?
 max(firstScores$diff)
@@ -90,29 +90,35 @@ print(firstScores)
 ## Create a vector of 100 employees ("Employee 1", "Employee 2", ... "Employee
 ## 100")
 ## Hint: use 'paste()` or `str_c`
-
+employees <- c(paste("Employee", (1:100)))
 
 ## Create a random vector of their 2021 salaries.
 ## Hint: you may use the runif function to create uniform random numbers,
 ## e.g. 'runif(100, 60, 120)' creates 100 random numbers between 60 and 120
-
+salariesFY21 <- c(runif(100, 50, 150))
+salariesFY21
 
 ## Create a random vector of 2022 salaries that are typically
 ## higher than the 2014 salaires (use runif again).
 ## For instance, if you create random numbers between 65 and 130, then 2022
 ## salaries tend to be larger than 2021 salaries.
+salariesFY22 <- c(runif(100, 70, 160))
+salariesFY22
 
 
 ## Create a data.frame 'salaries' by combining the vectors you just made
-
+salaries <- data.frame(employees, salariesFY21, salariesFY22)
+salaries
 
 ## Create a column 'raise' that stores the size of the
 ## raise between 2021 and 2022
-
+salaries$raise <- salaries$salariesFY22 - salaries$salariesFY21
+salaries
 
 ## Retrieve values from your data frame to answer the following questions:
 ##
 ## What was the 2015 salary of employee 57
+salaries[salaries$employees == 57, "salariesFY21"]
 
 
 ## Now round the answer down to two digits after comma
