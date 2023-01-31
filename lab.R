@@ -9,62 +9,78 @@
 ## Use an appropriate variable name for the scores
 ## 
 ## Hint: feel free to invent if you cannot figure this out
-
+seahawksScores <- c(17, 7, 23, 48, 32)
+seahawksScores
 
 ## Create a vector of the number of points the opponent
 ## scored against Seahawks in the first 5 games
 ## use an appropriate variable name
+oppScores <- c(16, 27, 27, 45, 39)
 
 
 ## Combine your two vectors into a dataframe
-
+firstScores <- data.frame(seahawksScores, oppScores)
+firstScores
 
 ## Create a new column "diff" that is the difference in points
 ## (in favor of Hawks)
-
+firstScores$diff <- firstScores$seahawksScores - firstScores$oppScores
+firstScores
 
 ## Create a new column "won" which is TRUE if the Seahawks won,
 ## ie if Seahawks scored more than the opponent scored against them
-
+firstScores$won <- diff > 0
+firstScores
 
 ## Create a vector of the opponents name (such as "Denver Broncos")
-
+oppNames <- c("Denver Broncos", "San Francisco 49ers", "Atlanta Falcons", "Detroit Lions", "New Orleans Saints")
 
 ## Add the vector of opponents into the data frame
-
+firstScores$oppNames <- oppNames
+firstScores
 
 ## Compute the average score of Seahawks
-
+cat("The average Seahawks score for the first five games of the 2022 season was", mean(seahawksScores))
 
 ## Compute how many games did Seahawks won
 ## (use the 'won' variable to compute it)
-
+length(won[TRUE])
 
 ## What was the largest difference in scores (in favor of Seahawks)?
-
+max(firstScores$diff)
 
 ## How many different opponents did Seahawks have in these games?
 ## Hint: use `unique()` and `length()`
-
+length(unique(firstScores$oppNames))
 
 ## Print the variable names in your data frame
-
+print(names(firstScores))
 
 ## Write a loop over all variables in your data frame
 ## print the variable name inside the loop
-
+for (var in names(firstScores)) {
+  cat(var, "\n")
+}
 
 ## Write a loop over all variables in your data frame
 ## print the variable name inside the loop,
 ## and true/false, depending if the variable is numeric
 ## check out 'is.numeric()'
-
-
+cat("Check for numeric?")
+for(var in names(firstScores)) {
+  cat(var, is.numeric(firstScores[[var]]),"\n")
+}
 ## Write a loop over all variables in your data frame
 ## print the variable name inside the loop,
 ## and the average value of the variable
 ## if the variable is numeric
+for(var in names(firstScores)) {
+  if(is.numeric(firstScores[[var]])) {
+    cat(var, mean(firstScores[[var]]), "\n")
+  }
+}
 
+print(firstScores)
 
 ##
 ## HR data
