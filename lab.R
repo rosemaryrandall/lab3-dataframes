@@ -117,27 +117,27 @@ salaries
 
 ## Retrieve values from your data frame to answer the following questions:
 ##
-## What was the 2015 salary of employee 57
-salaries[salaries$employees == 57, "salariesFY21"]
-
+## What was the 2021 salary of employee 57
+salaries[57, 2]
 
 ## Now round the answer down to two digits after comma
 ## check out 'round()' function
-
+round(salaries[57, 2], digits = 2)
 
 ## How many employees got a raise?
-
+sum(salaries$raise > 0)
 
 ## What was the value of the highest raise?
 ## Round the number to two digits!
+max(salaries$raise)
 
-
-## What was the name of the employee who recieved the highest raise?
-
+## What was the name of the employee who received the highest raise?
+salaries[max(salaries$raise)]
 
 ## What was the average salary increase?
 ## Round the number!
-
+mean(salaries$raise > 0)
 
 ## For people who did not get a raise, how much money did they lose?
 ## Round the number!
+mean(salaries$raise < 0)
